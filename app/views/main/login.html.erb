@@ -1,0 +1,11 @@
+<h1>Prihlásenie</h1>
+
+  <% if flash[:logged] == "invalid" %>
+    <span class="error_box"><%= flash[:notice] %></span>
+  <% end %>
+
+<%= form_tag(:action => 'action_login') do %>
+  <p>Používateľské meno alebo email:<br/> <%= text_field_tag(:user_or_email) %></p> 
+  <p>Heslo:<br/> <%= password_field_tag :prov_pass %></p> 
+  <%= submit_tag("Prihlásiť") %>
+<% end %>

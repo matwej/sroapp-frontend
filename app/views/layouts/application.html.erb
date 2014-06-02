@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>eGov - spolocnosti</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <%= render 'layouts/header' %>
+  </header>
+  
+  <nav>
+    <%= render 'layouts/navigation' %>
+  </nav>
+  
+  <div id="scontainer">
+  <section>
+    <% if @sidebar %>
+    <div id="sidebar">
+      <h3>Pomôcky:</h3>
+        <ul>
+        <%= raw @sidebar %>
+        </ul>
+    </div>
+    <% end %>
+  <%= yield %>
+  </section>
+  </div>
+  
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
+</body>
+</html>

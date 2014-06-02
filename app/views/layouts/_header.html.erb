@@ -1,0 +1,12 @@
+<%= image_tag("znak.gif", :alt => "štátny znak SR") %>
+<h1>eGov - s.r.o.</h1>
+<div id="h_login_info">
+  <% if @logged_user %>
+    Prihlásený ako <u><%= raw @logged_user.login%></u><br/>
+    <%= link_to "Odhlásenie", controller: "main", action: "logout" %>
+  <% else %>
+    Nieste prihlásený,<br/>
+    <%= link_to "Prihlásenie", controller: "main", action: "login" %><br/>
+    <%= link_to "Registrácia", controller: "main", action: "register" %>
+  <% end %>
+</div>

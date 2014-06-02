@@ -1,0 +1,47 @@
+sk: 
+  activerecord:
+    attributes:
+      user:
+        login: "Používateľské meno"
+        pass: "Heslo"
+        pass_confirmation: "Potvrdenie hesla"
+      profil:
+        priez: "Priezvisko"
+        cislo: "Súpisné číslo"
+        psc: "PSČ"
+        stat: "Štát"
+    errors:
+      models:
+        user:
+          attributes:
+            login:
+              blank: " je prázdny reťazec!"
+              taken: " so zadaným menom existuje."
+              too_short: " je krátke.(min. 3 znaky)"
+            email:
+              blank: " je prázdny reťazec!"
+              taken: " už existuje v databáze."
+              invalid: " má nesprávny formát."
+            pass:
+              too_short: " je príliš krátke.(min. 6 znakov)"
+              too_long: " je príliš dlhé.(max. 20 znakov)"
+            pass_confirmation:
+              confirmation: " sa nezhoduje s kontrolou."
+        profil:
+          attributes:
+            meno:
+              blank: " nie je vyplnené"
+            priez:
+              blank: " nie je vyplnené"
+            ulica:
+              blank: " nie je vyplnená"
+            cislo:
+              blank: " nie je vyplnené"
+              not_a_number: " nie je číslo"
+            obec:
+              blank: " nie je vyplnená"
+            psc:
+              blank: " nie je vyplnené"
+              not_a_number: " nie je správne"
+            stat:
+              blank: " nie je vyplnený"

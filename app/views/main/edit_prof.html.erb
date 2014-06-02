@@ -1,0 +1,16 @@
+<h1>Zmena profilu</h1>
+
+<%= form_for(@profil, :url => {:controller => 'main', :action => 'action_edit_prof'}) do |f| %>
+  <p> Titul/y pred menom:<br/> <%= f.text_field :t_pred, :size => 10 %> </p>
+  <p> Meno:<br/> <%= f.text_field :meno%> </p>
+  <p> Priezvisko:<br/> <%= f.text_field :priez%> </p>
+  <p> Titul/y za menom:<br/> <%= f.text_field :t_za, :size => 10 %> </p>
+  <h4>Adresa</h4>
+  <p> Ulica:<br/> <%= f.text_field :ulica, :size => 50 %> </p>
+  <p> Súpisné číslo:<br/> <%= f.text_field :cislo, :size => 5 %> </p>
+  <p> Obec:<br/> <%= f.text_field :obec, :size => 30 %> </p>
+  <p> PSČ:<br/> <%= f.text_field :psc, :size => 5 %> </p>
+  <p> Štát:<br/> <%= f.text_field :stat, :size => 30 %> </p>
+  <% form_tag(main_action_edit_prof_path, method: "patch") %>
+    <%= f.submit :Zmeň %>
+<% end %>

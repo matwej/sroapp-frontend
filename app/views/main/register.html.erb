@@ -1,0 +1,22 @@
+<h1>Registrácia</h1>
+
+  <% if flash[:register] == "valid" %>
+    <span class="success_box"><%= flash[:notice] %></span>
+  <% elsif flash[:register] == "invalid" %>
+    <span class="error_box"><%= flash[:notice] %></span>
+  <% end %>
+  
+<%= form_for(:user, :url => {:controller => 'main', :action => 'cr_acc'}) do |f| %>
+  <p> Užívateľské meno:<br/> <%= f.text_field :login%> </p>
+  <p> Heslo:<br/> <%= f.password_field :pass%></p>
+  <p> Heslo (potvrdenie):<br/> <%= f.password_field :pass_confirmation%> </p>
+  <p> Email:<br/> <%= f.text_field :email%> </p>
+    <%= f.submit :Registrácia %>
+<% end %>
+  <% if @user.errors.any? %>
+    <ul>
+    <% for message_error in @user.errors.full_messages %>
+      <li style="color:red"><%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>

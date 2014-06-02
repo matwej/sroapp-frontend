@@ -1,0 +1,28 @@
+<h1>Vytvor profil</h1>
+
+ <% if flash[:cr_prof] == "valid" %>
+  <span class="success_box"><%= flash[:notice] %></span>
+ <% elsif flash[:cr_prof] == "invalid" %>
+  <span class="error_box"><%= flash[:notice] %></span>
+ <% end %>
+  
+<%= form_for(:profil, :url => {:controller => 'main', :action => 'create_profile'}) do |f| %>
+  <p> Titul/y pred menom:<br/> <%= f.text_field :t_pred, :size => 10 %> </p>
+  <p> Meno:<br/> <%= f.text_field :meno%> </p>
+  <p> Priezvisko:<br/> <%= f.text_field :priez%> </p>
+  <p> Titul/y za menom:<br/> <%= f.text_field :t_za, :size => 10 %> </p>
+  <h4>Adresa</h4>
+  <p> Ulica:<br/> <%= f.text_field :ulica, :size => 50 %> </p>
+  <p> Súpisné číslo:<br/> <%= f.text_field :cislo, :size => 5 %> </p>
+  <p> Obec:<br/> <%= f.text_field :obec, :size => 30 %> </p>
+  <p> PSČ:<br/> <%= f.text_field :psc, :size => 5 %> </p>
+  <p> Štát:<br/> <%= f.text_field :stat, :size => 30 %> </p>
+    <%= f.submit :Vytvor %>
+  <% end %>
+  <% if @profil.errors.any? %>
+    <ul>
+    <% for message_error in @profil.errors.full_messages %>
+      <li style="color:red"><%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>

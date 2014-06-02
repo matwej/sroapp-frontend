@@ -1,0 +1,41 @@
+<h1>Fyzická osoba</h1>
+
+<% if flash[:edited] == "valid" %>
+  <span class="success_box"><%= flash[:notice] %></span>
+<% elsif flash[:edited] == "invalid" %>
+  <span class="error_box"><%= flash[:notice] %></span>
+<% end %>
+
+<% if @profil %>
+  <p>
+    <b>Meno a priezvisko: </b><br/>
+    <%= @profil.t_pred + " " + @profil.meno + " " + @profil.priez + " " + @profil.t_za %>
+  </p>
+  <p>
+    <b>Adresa:</b><br/>
+    <%= @profil.ulica + " " + @profil.cislo.to_s %><br/>
+    <%= @profil.psc.to_s + " " + @profil.obec %><br/>
+    <%= @profil.stat %>
+  </p>
+  
+  <%= link_to "Zmeniť profil", controller: "main", action: "edit_prof" %>
+  <%= form_for(:user, :url => {:controller => 'main', :action => 'delete_prof'}) do |f| %>
+    <%= f.submit :"Vymaž profil" %> 
+  <% end %>
+<% else %>
+ <%= link_to "Vytvor profil", controller: "main", action: "cr_prof" %>
+<% end %>
+
+<h3>Nastavenia</h3>
+
+  <b>Aktuálny e-mail:</b> <%= @logged_user.email %>
+  <%= form_for(:user, :url => {:controller => 'main', :action => 'edit_user_email'}) do |f| %>
+    Nastaviť nový email: <%= f.text_field :email%> &nbsp; <%= f.submit :"Zmeň email" %> 
+  <% end %>
+  <br/>
+  <%= form_for(:user, :url => {:controller => 'main', :action => 'edit_user_pass'}) do |f| %>
+    Staré heslo: <%= f.password_field :old_pass%><br/>
+    Nové heslo: <%= f.password_field :pass%><br/>
+    Nové znovu: <%= f.password_field :pass_confirmation%><br/>
+    <%= f.submit :"Zmeň heslo" %> 
+  <% end %>
