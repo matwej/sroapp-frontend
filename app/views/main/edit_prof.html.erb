@@ -1,6 +1,6 @@
 <h1>Zmena profilu</h1>
 
-<%= form_for(@profil, :url => {:controller => 'main', :action => 'action_edit_prof'}) do |f| %>
+<%= form_for(@profile, :url => {:controller => 'main', :action => 'action_edit_prof'}) do |f| %>
   <p> Titul/y pred menom:<br/> <%= f.text_field :t_pred, :size => 10 %> </p>
   <p> Meno:<br/> <%= f.text_field :meno%> </p>
   <p> Priezvisko:<br/> <%= f.text_field :priez%> </p>

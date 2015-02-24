@@ -6,7 +6,7 @@
   <span class="error_box"><%= flash[:notice] %></span>
  <% end %>
   
-<%= form_for(:profil, :url => {:controller => 'main', :action => 'create_profile'}) do |f| %>
+<%= form_for(:profile, :url => {:controller => 'main', :action => 'create_profile'}) do |f| %>
   <p> Titul/y pred menom:<br/> <%= f.text_field :t_pred, :size => 10 %> </p>
   <p> Meno:<br/> <%= f.text_field :meno%> </p>
   <p> Priezvisko:<br/> <%= f.text_field :priez%> </p>
@@ -19,9 +19,9 @@
   <p> Štát:<br/> <%= f.text_field :stat, :size => 30 %> </p>
     <%= f.submit :Vytvor %>
   <% end %>
-  <% if @profil.errors.any? %>
+  <% if @profile.errors.any? %>
     <ul>
-    <% for message_error in @profil.errors.full_messages %>
+    <% for message_error in @profile.errors.full_messages %>
       <li style="color:red"><%= message_error %></li>
     <% end %>
     </ul>

@@ -1,0 +1,12 @@
+class CreateUdajes < ActiveRecord::Migration
+  def change
+    create_table :udajes do |t|
+      t.string :t_pred
+      t.string :meno
+      t.string :priez
+      t.string :t_za
+
+      t.timestamps
+    end
+  end
+end

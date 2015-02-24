@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  t_pred: MyString
+  meno: MyString
+  priez: MyString
+  t_za: MyString
+  ulica: MyString
+  cislo: 1
+  obec: MyString
+  psc: 1
+  stat: MyString
+  type: 1
+  dat_nar: 2014-06-13
+  rc: MyString
+  vklad: 1
+  splatene: 1
+  sposob: MyText
+
+two:
+  t_pred: MyString
+  meno: MyString
+  priez: MyString
+  t_za: MyString
+  ulica: MyString
+  cislo: 1
+  obec: MyString
+  psc: 1
+  stat: MyString
+  type: 1
+  dat_nar: 2014-06-13
+  rc: MyString
+  vklad: 1
+  splatene: 1
+  sposob: MyText

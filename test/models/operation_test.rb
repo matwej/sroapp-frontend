@@ -1,6 +1,7 @@
+# -*- encoding : utf-8 -*-
 require 'test_helper'
 
-class ProfilTest < ActiveSupport::TestCase
+class OperationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

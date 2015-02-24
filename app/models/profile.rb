@@ -1,4 +1,5 @@
-class Profil < ActiveRecord::Base
+# -*- encoding : utf-8 -*-
+class Profile < ActiveRecord::Base
   # vztah k uzivatelovi
   belongs_to :user
   

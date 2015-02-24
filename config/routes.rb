@@ -1,9 +1,8 @@
 # -*- encoding : utf-8 -*-
 Rails.application.routes.draw do
-  
-  get 'sro/cr_sro'
-  get 'sro/del_sro'
-  get 'sro/found_sro'
+
+  get 'sro/show'
+  get 'sro/create'
   
   get 'main/show_prof'
   get 'main/edit_prof'
@@ -20,10 +19,27 @@ Rails.application.routes.draw do
   post 'main/create_profile'
   post 'main/action_login'
   post 'main/delete_prof'
+  patch 'main/action_edit_prof'
   post 'main/edit_user_email'
   post 'main/edit_user_pass'
   
-  patch 'main/action_edit_prof'
+  delete 'sro/delete'
+  post 'sro/step12'
+  get 'sro/step2'
+  patch 'sro/step23'
+  get 'sro/step3'
+  patch 'sro/step34'
+  get 'sro/step4'
+  patch 'sro/step45'
+  get 'sro/step5'
+  patch 'sro/step56'
+  get 'sro/step6'
+  patch 'sro/step67'
+  get 'sro/step7'
+  post 'sro/step78'
+  get 'sro/step8'
+  
+  resources :people, :only => [:destroy, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

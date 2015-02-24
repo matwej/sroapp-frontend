@@ -1,0 +1,4 @@
+class Cinaspol < ActiveRecord::Base
+  belongs_to :sro
+  belongs_to :cinnost
+end

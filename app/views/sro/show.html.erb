@@ -1,0 +1,23 @@
+<h1>Spoločnosti</h1>
+
+ <% if flash[:step1] == "valid" %>
+  <span class="success_box"><%= flash[:notice] %></span>
+ <% elsif flash[:step1] == "invalid" %>
+  <span class="error_box"><%= flash[:notice] %></span>
+ <% end %>
+
+<h3>Moje spoločnosti</h3>
+<% @sros.each do |sro| %>
+  <p>
+  <b><%= sro.nazov %></b>&nbsp;&nbsp;
+  <% if sro.proces.eql? "step8" %>
+      <%= link_to "Dokončené", :controller => "sro", :action => sro.proces, :sro_id => sro.id.to_s %>
+  <% else %>
+      <%= link_to "Pokračovať", :controller => "sro", :action => sro.proces, :sro_id => sro.id.to_s %>
+  <% end %>
+  |
+  <%= link_to "Zmazať", sro_delete_path(:sro_id => sro.id), method: :delete,  data: { confirm: "Naozaj chete spoločnosť v procese vymazať?" } %>
+  </p>
+<% end %>
+<hr/>
+<%= link_to "Založiť s.r.o.", controller: "sro", action: "create" %>

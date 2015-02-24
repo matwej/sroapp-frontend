@@ -1,0 +1,4 @@
+$('.list').html("<%= escape_javascript(render('people/list')) %>");
+$('input:text', $('#new_person')).each(function () {
+    $(this).val("");
+});

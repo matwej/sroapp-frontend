@@ -10,6 +10,11 @@ sk:
         cislo: "Súpisné číslo"
         psc: "PSČ"
         stat: "Štát"
+      sro:
+        nazov: "Spoločnosť"
+        cislo: "Súpisné číslo"
+        psc: "PSČ"
+        stat: "Štát"
     errors:
       models:
         user:
@@ -21,7 +26,7 @@ sk:
             email:
               blank: " je prázdny reťazec!"
               taken: " už existuje v databáze."
-              invalid: " nie je validný."
+              invalid: " má nesprávny formát."
             pass:
               too_short: " je príliš krátke.(min. 6 znakov)"
               too_long: " je príliš dlhé.(max. 20 znakov)"
@@ -33,6 +38,23 @@ sk:
               blank: " nie je vyplnené"
             priez:
               blank: " nie je vyplnené"
+            ulica:
+              blank: " nie je vyplnená"
+            cislo:
+              blank: " nie je vyplnené"
+              not_a_number: " nie je číslo"
+            obec:
+              blank: " nie je vyplnená"
+            psc:
+              blank: " nie je vyplnené"
+              not_a_number: " nie je správne"
+            stat:
+              blank: " nie je vyplnený"
+        sro:
+          attributes:
+            nazov:
+              blank: " nie je vyplnené"
+              taken: " so zadaným menom existuje už existuje v ORSR."
             ulica:
               blank: " nie je vyplnená"
             cislo:

@@ -3,6 +3,7 @@ require 'digest/sha1'
 
 class MainController < ApplicationController
   
+  # filter ohranicenia pristupu pre prihlaseneho/neprihlaseneho
   before_filter :logged_in, :only => [:index, :show_prof, :edit_prof, :cr_prof, :del_prof, :logout]
   before_filter :not_logged, :only => [:welcome, :login, :register]
   
@@ -11,28 +12,29 @@ class MainController < ApplicationController
   end
   
   def welcome
-    @sidebar = "<li>Pred používaním sa prihláste</li>"
     # uvodna stranka
   end
   
   def show_prof
-    @sidebar = "<li>Vyplnený profil bude použitý na autodopĺňanie osobných údajov</li>"
-    @profil = Profil.find_by_user_id session[:user_id]
+    # zobrazenie profil
+    @profile = Profile.find_by user_id: session[:user_id]
   end
 
   def edit_prof
-    @profil = Profil.find_by_user_id session[:user_id]
+    # stranka editacie profilu
+    @profile = Profile.find_by user_id: session[:user_id]
   end
 
   def cr_prof
-    @profil = Profil.new 
+    # vytvaranie profilu
+    @profile = Profile.new 
   end
   
   # vytvorenie profilu, post metoda
   def create_profile
-    @profil = Profil.new(profil_params)
-    @profil.user_id = session[:user_id]
-    if @profil.save
+    @profile = Profile.new(profile_params)
+    @profile.user_id = session[:user_id]
+    if @profile.save
       flash[:notice] = "Profil vytvorený."
       flash[:cr_prof]= "valid"
     else
@@ -44,8 +46,8 @@ class MainController < ApplicationController
 
   # vymazanie profilu, post metoda
   def delete_prof
-    profil = Profil.find_by_user_id session[:user_id]
-    if profil.destroy
+    profile = Profile.find_by user_id: session[:user_id]
+    if profile.destroy
       flash[:notice] = "Profil vymazaný."
       flash[:edited]= "valid"
     end
@@ -54,8 +56,8 @@ class MainController < ApplicationController
   
   #zmena profilu, patch metoda
   def action_edit_prof
-    profil = Profil.find_by_user_id session[:user_id]
-    if profil.update_attributes(profil_params)
+    profile = Profile.find_by user_id: session[:user_id]
+    if profile.update_attributes(profile_params)
       flash[:notice] = "Profil zmenený."
       flash[:edited]= "valid"
     else
@@ -67,9 +69,6 @@ class MainController < ApplicationController
 
   # vyrenderovanie noveho pouzivatela, aj formular
   def register
-    @sidebar = "<li>minimálny počet znakov hesla je 6</li>" +
-               "<li>minimálny počet znakov používateľského mena je 3</li>" +
-               "<li>meno aj email musia byť unikátne</li>"
     @user = User.new
   end
   
@@ -115,7 +114,6 @@ class MainController < ApplicationController
 
   # renderovanie prihlasenia
   def login
-    @sidebar = "<li>skontrolujte si malé a veľké písmena</li>"
     # formular prihlasenia
   end
   
@@ -145,7 +143,7 @@ class MainController < ApplicationController
   def user_params    
     params.require(:user).permit(:login, :pass, :pass_confirmation, :email)
   end
-  def profil_params
-    params.require(:profil).permit(:t_pred, :t_za, :meno, :priez, :ulica, :cislo, :obec, :psc, :stat)
+  def profile_params
+    params.require(:profile).permit(:t_pred, :t_za, :meno, :priez, :ulica, :cislo, :obec, :psc, :stat)
   end
 end

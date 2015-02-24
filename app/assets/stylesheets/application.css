@@ -39,8 +39,11 @@ header img {
 }
 
 header h1 {
-    float: left;
     display: inline;
+}
+
+#header_group {
+    float: left;
     margin: 0px;
     margin-left: 10px;
 }
@@ -111,7 +114,7 @@ nav a:active {
 }
 
 section {
-    width: 70%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
     background-color: white;
@@ -123,6 +126,20 @@ section {
 
 section h1,h2,h3,h4,h5,h6 {
     color: rgba(0,0,255,0.7);    
+}
+
+section a:link,section a:visited, .btn-next {
+   background: rgba(0,0,255,0.3);
+   border: 1px solid blue;
+   box-shadow: 0px 0px 4px 1px;
+   border-radius: 5px;
+   padding: 3px;
+   text-decoration: none;
+   color: black;
+}
+
+section a:hover, .btn-next:hover {
+   background: rgba(0,0,255,0.6); 
 }
 
 .error_box {

@@ -1,0 +1,4 @@
+class Sro < ActiveRecord::Base
+  has_many :opandsros
+  has_many :cinnosts, through: :cinaspols
+end

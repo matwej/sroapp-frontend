@@ -1,0 +1,40 @@
+<h1>Spoločníci</h1>
+
+ <% if flash[:status] == "invalid" %>
+  <span class="error_box"><%= flash[:notice] %></span>
+ <% end %>
+
+<h3>Pridaní</h3>
+<div class = "list">
+<%= render 'people/list' %>
+</div>
+
+<h3>Pridaj</h3>
+<%= form_for @person, :remote => true do |f| %>
+  <p> Titul/y pred menom:<br/> <%= f.text_field :t_pred, :size => 10 %> </p>
+  <p> Meno:<br/> <%= f.text_field :meno%> </p>
+  <p> Priezvisko:<br/> <%= f.text_field :priez%> </p>
+  <p> Titul/y za menom:<br/> <%= f.text_field :t_za, :size => 10 %> </p>
+  <p> Rodné číslo:<br/> <%= f.text_field :rc, :size => 20 %> </p>
+  <h4>Adresa</h4>
+  <p> Ulica:<br/> <%= f.text_field :ulica, :size => 50 %> </p>
+  <p> Súpisné číslo:<br/> <%= f.text_field :cislo, :size => 5 %> </p>
+  <p> Obec:<br/> <%= f.text_field :obec, :size => 30 %> </p>
+  <p> PSČ:<br/> <%= f.text_field :psc, :size => 5 %> </p>
+  <p> Štát:<br/> <%= f.text_field :stat, :size => 30 %> </p>
+  <h4>Vklady</h4>
+  <p> Vklad:<br/> <%= f.text_field :vklad, :size => 15 %> EUR </p>
+  <p> Splatené:<br/> <%= f.text_field :splatene, :size => 15 %> EUR </p>
+  <%= f.hidden_field :typ, :value => 1 %>
+  <%= f.hidden_field :dat_nar, :value => "1" %>
+  <%= f.hidden_field :sposob, :value => "a" %>
+  <%= f.hidden_field :sro_id, :value => @sro.id %>
+  <%= f.submit :Pridaj, :class => "btn-next" %>
+<% end %>
+<hr>
+<%= link_to "Späť", sro_step2_path(:sro_id => @sro.id) , :style => "float:left" %>
+ 
+<%=form_for(@sro, :url => {:controller => 'sro', :action => 'step34'}) do |f| %>
+  <%= f.hidden_field :id, :value => @sro.id %>
+  <%= f.submit "Pokračovať" , :style => "float:right",:class => "btn-next" %>
+<% end %>

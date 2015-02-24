@@ -39,3 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
+gem 'rest_client'
+# gem "paperclip", "~> 4.1"
+# gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'carrierwave'

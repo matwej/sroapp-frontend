@@ -1,0 +1,34 @@
+<h1>Činnosti</h1>
+
+ <% if flash[:status] == "invalid" %>
+  <p><span class="error_box"><%= flash[:notice] %></span></p>
+ <% end %>
+
+  <div id="sidebar">
+    <h3>Informácia:</h3>
+    <ul>
+      <li>Podržaním tlačidla <b>ctrl</b> vyberiete viacero možností</li>
+      <li>Vybrané činnosti budú overené v Živnostenskom registri pre vytváranú spoločnosť</li>
+      <li>V prípade dodatočného pridania ďalších činností sa k tomuto kroku môžete kedykoľvek vrátiť a vybrať potrebnú činnosť</li>
+    </ul>
+  </div>
+
+<% if params[:resps] %>
+  <b>Spoločnosť podľa Živnostenského registra SR nemá oprávnenia na nasledovné činnosti:</b>
+<ul>
+  <% params[:resps].each do |r| %>
+    <li><%= r %></li>
+  <%  end %>
+</ul>
+<% end %>
+<br/>
+<%= form_for(@sro, :url => {:controller => 'sro', :action => 'step23'}) do |f| %>
+
+  <%= fields_for(@group) do |cc| %>
+    <%= f.collection_select( :operation_ids, @all_operations, :id, :popis, {}, { :multiple => true }) %>
+  <% end %>
+  <%= f.hidden_field :proces, :value => "step3" %>
+  <%= f.hidden_field :id, :value => @sro.id %>
+  <br/>
+  <%= f.submit "Pokračovať",:class => "btn-next" %>
+<% end %>

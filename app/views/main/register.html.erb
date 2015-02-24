@@ -6,6 +6,15 @@
     <span class="error_box"><%= flash[:notice] %></span>
   <% end %>
   
+  <div id="sidebar">
+    <h3>Pomôcky:</h3>
+    <ul>
+      <li>minimálny počet znakov hesla je 6</li>
+      <li>minimálny počet znakov používateľského mena je 3</li>
+      <li>meno aj email musia byť unikátne</li>
+    </ul>
+  </div>
+  
 <%= form_for(:user, :url => {:controller => 'main', :action => 'cr_acc'}) do |f| %>
   <p> Užívateľské meno:<br/> <%= f.text_field :login%> </p>
   <p> Heslo:<br/> <%= f.password_field :pass%></p>

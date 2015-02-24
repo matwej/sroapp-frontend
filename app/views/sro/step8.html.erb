@@ -1,0 +1,13 @@
+<h1>Dokončené</h1>
+<p>
+  <b>Uložené dokumenty:</b> <a href="<%= @zip.file.url %>" title="Dokumenty">stiahnuť</a><br/><br/>
+  Pokiaľ ich chcete zmeniť, vrátte sa o krok späť a nahrajte nový balík.
+</p>
+<h3>Stav požiadavky:</h3>
+<p style="border:1px black;box-shadow: 0px 0px 4px 1px;padding:2px"><b><%= print_status(@sro) %></b></p>
+<h3>Dôležité</h3>
+Po schválení a skontrolvaní údajov pracovníkom ORSR v príslušnom okresnom súde
+podľa sídla spoločnosti vzniká spoločnosti povinnosť registrácie na Daňovom úrade SR
+(môžete využiť opakovane tento portál) do <b>30</b> kalendárnych dní.
+<hr>
+<%= link_to "Späť", sro_step7_path(:sro_id => @sro.id) , :style => "float:left" %>

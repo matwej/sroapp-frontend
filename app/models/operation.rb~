@@ -1,0 +1,4 @@
+class Operation < ActiveRecord::Base
+  has_many :opandsro
+  has_many :sros, through: :opandsro
+end

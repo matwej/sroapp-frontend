@@ -11,9 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601130521) do
+ActiveRecord::Schema.define(version: 20140614193516) do
 
-  create_table "profils", force: true do |t|
+  create_table "opandsros", force: true do |t|
+    t.integer  "sro_id"
+    t.integer  "operation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "operations", force: true do |t|
+    t.text     "popis"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "people", force: true do |t|
+    t.string   "t_pred"
+    t.string   "meno"
+    t.string   "priez"
+    t.string   "t_za"
+    t.string   "ulica"
+    t.integer  "cislo"
+    t.string   "obec"
+    t.integer  "psc"
+    t.string   "stat"
+    t.integer  "typ"
+    t.date     "dat_nar"
+    t.string   "rc"
+    t.integer  "vklad"
+    t.integer  "splatene"
+    t.text     "sposob"
+    t.date     "funkcia_od"
+    t.integer  "sro_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "profiles", force: true do |t|
     t.string   "meno"
     t.string   "priez"
     t.string   "t_pred"
@@ -28,10 +63,35 @@ ActiveRecord::Schema.define(version: 20140601130521) do
     t.datetime "updated_at"
   end
 
+  create_table "sros", force: true do |t|
+    t.string   "nazov"
+    t.string   "ulica"
+    t.integer  "cislo"
+    t.string   "obec"
+    t.integer  "psc"
+    t.string   "stat"
+    t.string   "ico"
+    t.string   "forma"
+    t.integer  "imanie"
+    t.integer  "splatene"
+    t.string   "proces"
+    t.boolean  "schvalene"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "login"
     t.string   "email"
     t.string   "encpass"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "zips", force: true do |t|
+    t.string   "file"
+    t.integer  "sro_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

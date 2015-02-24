@@ -6,16 +6,21 @@
   <span class="error_box"><%= flash[:notice] %></span>
 <% end %>
 
-<% if @profil %>
+  <div id="sidebar">
+    <h3>Informácia:</h3>
+    Vyplnený profil bude použitý na autodopĺňanie osobných údajov a súčasne na identifikáciu navrhovateľa.    
+  </div>
+
+<% if @profile %>
   <p>
     <b>Meno a priezvisko: </b><br/>
-    <%= @profil.t_pred + " " + @profil.meno + " " + @profil.priez + " " + @profil.t_za %>
+    <%= @profile.t_pred + " " + @profile.meno + " " + @profile.priez + " " + @profile.t_za %>
   </p>
   <p>
     <b>Adresa:</b><br/>
-    <%= @profil.ulica + " " + @profil.cislo.to_s %><br/>
-    <%= @profil.psc.to_s + " " + @profil.obec %><br/>
-    <%= @profil.stat %>
+    <%= @profile.ulica + "/ " + @profile.cislo.to_s %><br/>
+    <%= @profile.psc.to_s + " " + @profile.obec %><br/>
+    <%= @profile.stat %>
   </p>
   
   <%= link_to "Zmeniť profil", controller: "main", action: "edit_prof" %>

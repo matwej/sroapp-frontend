@@ -1,0 +1,10 @@
+class CreateCinaspols < ActiveRecord::Migration
+  def change
+    create_table :cinaspols do |t|
+      t.belongs_to :sro
+      t.belongs_to :cinnost
+      t.datetime :platne_od
+      t.timestamps
+    end
+  end
+end

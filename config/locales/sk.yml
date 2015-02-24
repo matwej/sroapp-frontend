@@ -10,6 +10,19 @@ sk:
         cislo: "Súpisné číslo"
         psc: "PSČ"
         stat: "Štát"
+      sro:
+        nazov: "Spoločnosť"
+        cislo: "Súpisné číslo"
+        psc: "PSČ"
+        stat: "Štát"
+      person:
+        priez: "Priezvisko"
+        cislo: "Súpisné číslo"
+        psc: "PSČ"
+        stat: "Štát"
+        dat_nar: "Dátum narodenia"
+        sposob: "Spôsob konania"
+        rc: "Rodné číslo"
     errors:
       models:
         user:
@@ -45,3 +58,55 @@ sk:
               not_a_number: " nie je správne"
             stat:
               blank: " nie je vyplnený"
+        sro:
+          attributes:
+            nazov:
+              blank: " nie je vyplnené"
+              taken: " so zadaným menom už existuje v ORSR."
+            ulica:
+              blank: " nie je vyplnená"
+            cislo:
+              blank: " nie je vyplnené"
+              not_a_number: " nie je číslo"
+            obec:
+              blank: " nie je vyplnená"
+            psc:
+              blank: " nie je vyplnené"
+              not_a_number: " nie je správne"
+            stat:
+              blank: " nie je vyplnený"
+            imanie:
+              greater_than_or_equal_to: " musí byť minimálne 5000,- EUR"
+            splatene:
+              greater_than_or_equal_to: " imanie musí byť v minimálnej výške 2500,- EUR"
+        person:
+          attributes:
+            meno:
+              blank: " nie je vyplnené"
+            priez:
+              blank: " nie je vyplnené"
+            ulica:
+              blank: " nie je vyplnená"
+            cislo:
+              blank: " nie je vyplnené"
+              not_a_number: " nie je číslo"
+            obec:
+              blank: " nie je vyplnená"
+            psc:
+              blank: " nie je vyplnené"
+              not_a_number: " nie je správne"
+            stat:
+              blank: " nie je vyplnený"
+            dat_nar:
+              blank: " nie je vyplnený"
+            sposob:
+              blank: " nie je vyplnený"
+            rc:
+              blank: " nie je vyplnené"
+              invalid: " má nesprávny tvar"
+            vklad:
+              blank: " nie je vyplnené"
+              not_a_number: " nie je číslo"
+            splatene:
+              blank: " nie je vyplnené"
+              not_a_number: " nie je číslo"

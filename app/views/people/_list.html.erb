@@ -1,0 +1,54 @@
+<% if @all_asso %>
+  <%@all_asso.each do |e|%>
+   <p>
+   <b>Meno:</b> <%= e.t_pred + " " + e.meno + " " +  e.priez + " " + e.t_za %> <br/>
+   <b>Adresa:</b><br/>
+   <%= e.ulica + "/ " + e.cislo.to_s %> <br/>
+   <%= e.psc.to_s + ", " + e.obec %><br/>
+   <%= e.stat %><br/>
+   <b>Rodné číslo:</b> <%= e.rc %> <br/>
+   <b>Vklad: <%= e.vklad %></b> EUR<br/>
+   <b>Splatene: <%= e.splatene %></b> EUR<br/>
+   <%= link_to "Odobrať", person_path(e, :sro_id => @sro.id), method: :delete, :remote => true %>
+   </p>
+  <%end%>
+<% end%>
+
+<% if @all_mdir %>
+  <% @all_mdir.each do |e| %>
+   <p>
+   <b>Meno:</b> <%= e.t_pred + " " + e.meno + " " +  e.priez + " " + e.t_za %> <br/>
+   <b>Adresa:</b><br/>
+   <%= e.ulica + "/ " + e.cislo.to_s %> <br/>
+   <%= e.psc.to_s + ", " + e.obec %><br/>
+   <%= e.stat %><br/>
+   <p> Dátum narodenia:<br/> <%= e.dat_nar %> </p>
+   <p> Rodné číslo:<br/> <%= e.rc %> </p>
+   <b>Spôsob konania:</b> <%= e.sposob %> </p>
+   <%= link_to "Odobrať", person_path(e, :sro_id => @sro.id), method: :delete, :remote => true %>
+   </p>
+  <% end %>
+<% end%>
+
+<% if @all_sup %>
+  <% @all_sup.each do |e| %>
+   <p>
+   <b>Meno:</b> <%= e.t_pred + " " + e.meno + " " +  e.priez + " " + e.t_za %> <br/>
+   <b>Adresa:</b><br/>
+   <%= e.ulica + "/ " + e.cislo.to_s %> <br/>
+   <%= e.psc.to_s + ", " + e.obec %><br/>
+   <%= e.stat %><br/>
+   <p> Dátum narodenia:<br/> <%= e.dat_nar %> </p>
+   <p> Rodné číslo:<br/> <%= e.rc %> </p>
+   <%= link_to "Odobrať", person_path(e, :sro_id => @sro.id), method: :delete, :remote => true %>
+   </p>
+  <% end %>
+<% end%>
+
+<% if @person.errors.any? %>
+    <ul>
+    <% for message_error in @person.errors.full_messages %>
+      <li style="color:red"><%= message_error %></li>
+    <% end %>
+    </ul>
+ <%end %>

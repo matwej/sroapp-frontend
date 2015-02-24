@@ -10,8 +10,15 @@ class ApplicationController < ActionController::Base
   # metoda na autentifikaciu uzivatela
   def logged_in
     if session[:user_id]
+    begin
       @logged_user = User.find session[:user_id]
+    rescue Exception
+      session[:user_id]=nil
+      redirect_to(:controller => 'main', :action => 'welcome')
+      return false
+    else
       return true
+    end
     else
       redirect_to(:controller => 'main', :action => 'login')
       return false

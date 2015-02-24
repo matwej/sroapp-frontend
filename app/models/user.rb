@@ -3,6 +3,7 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
   attr_accessor :pass
+  has_many :sros
   
   # validacie formulara pred vlozenim do databazy
   EMAIL_RGXP = /\A(\S+)@(.+)\.(\S+)\z/

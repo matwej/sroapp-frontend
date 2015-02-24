@@ -1,0 +1,32 @@
+<h1>Imanie</h1>
+
+ <% if flash[:status] == "invalid" %>
+  <span class="error_box"><%= flash[:notice] %></span>
+ <% end %>
+  <%if @sro.errors.any? %>
+    <ul>
+    <% for message_error in @sro.errors.full_messages %>
+      <li style="color:red"><%= message_error %></li>
+    <% end %>
+    </ul>
+ <% end %>
+
+<%= form_for(@sro, :url => {:controller => 'sro', :action => 'step67'}) do |sro| %>
+   <p>
+    Základné imanie spoločnosti: <br/>
+    <%= sro.text_field :imanie, :size => 10 %>
+   </p>
+   <p>
+    Rozsah splatenia: <br/>
+    <%= sro.text_field :splatene %>
+   </p>
+   <p>
+    IBAN: <br/>
+    <%= text_field :banka , :iban %>
+   </p>
+ 
+  <hr> 
+  <%= link_to "Späť", sro_step5_path(:sro_id => @sro.id) , :style => "float:left" %>
+  <%= sro.hidden_field :id, :value => @sro.id %>
+  <%= sro.submit :Pokračuj , :style => "float:right" , :class => "btn-next" %>
+ <% end %>

@@ -1,0 +1,43 @@
+<h1>Založenie spoločnosti</h1>
+ 
+ <% if flash[:step1] == "invalid" %>
+  <span class="error_box"><%= flash[:notice] %></span>
+ <% end %>
+ 
+   <div id="sidebar">
+    <h3>Informácia:</h3>
+    Údaje o navrhovateľovi sú automaticky načítané z profilu prihláseného používateľa, skontrolujte si ich.
+  </div>
+ 
+ <h3>Navrhovateľ</h3>
+ <b>Titul pred menom:</b> <%= @navrh.t_pred %> <br/>
+ <b>Meno:</b> <%= @navrh.meno %> <br/>
+ <b>Priezvisko:</b> <%= @navrh.priez %> <br/>
+ <b>Titul za menom:</b> <%= @navrh.t_za %> <br/>
+ <b>Názov ulice:</b> <%= @navrh.ulica %> <br/>
+ <b>Súpisné číslo:</b> <%= @navrh.cislo %> <br/>
+ <b>Obec:</b> <%= @navrh.obec %> <br/>
+ <b>PSČ:</b> <%= @navrh.psc %> <br/>
+ <b>Štát:</b> <%= @navrh.stat %> <br/>
+ 
+ <%= form_for(@sro, :url => {:controller => 'sro', :action => 'step12'}) do |sro| %>
+  <h3> Názov:</h3>
+  <%= sro.text_field :nazov, :size => 30 %>
+  <h3>Sídlo</h3>
+   <p> Ulica:<br/> <%= sro.text_field :ulica, :size => 50 %> </p>
+   <p> Súpisné číslo:<br/> <%= sro.text_field :cislo, :size => 5 %> </p>
+   <p> Obec:<br/> <%= sro.text_field :obec, :size => 30 %> </p>
+   <p> PSČ:<br/> <%= sro.text_field :psc, :size => 5 %> </p>
+   <p> Štát:<br/> <%= sro.text_field :stat, :size => 30 %> </p>
+   <%= sro.hidden_field :proces, :value => "step2" %>
+  <%= sro.submit :Pokračuj , :class => "btn-next"%>
+ <% end %>
+ 
+ <% if @sro.errors.any? %>
+    <ul>
+    <% for message_error in @sro.errors.full_messages %>
+      <li style="color:red"><%= message_error %></li>
+    <% end %>
+    </ul>
+ <% end %>
+  

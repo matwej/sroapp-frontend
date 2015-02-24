@@ -1,6 +1,7 @@
-class CreateProfils < ActiveRecord::Migration
+# -*- encoding : utf-8 -*-
+class CreateProfiles < ActiveRecord::Migration
   def change
-    create_table :profils do |t|
+    create_table :profiles do |t|
       t.string :meno
       t.string :priez
       t.string :t_pred
